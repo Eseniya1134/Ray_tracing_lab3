@@ -13,6 +13,7 @@ const vec3 Unit = vec3 ( 1.0, 1.0, 1.0 ); // Единичный вектор
 out vec4 FragColor;
 in vec3 glPosition;
 uniform vec3 cube_color;
+uniform vec3 tetrah_color;
 uniform vec3 camera_position;
  
 
@@ -72,6 +73,14 @@ struct SCube
 };
 
 
+//Структура тетраэдра (состоит из 4 треугольников)
+struct STetrah
+{
+	STriangle bounds[4]; 
+	int  MaterialIdx;
+};
+
+
 // Структура для хранения информации о пересечении
 struct SIntersection 
 {     
@@ -106,7 +115,8 @@ struct STracingRay
 STriangle Triangles[12];   // Массив треугольников сцены
 SSphere Spheres[2];        // Массив сфер сцены
 SCube cube;                // Куб сцены
-SMaterial Materials[8];    // Массив материалов
+STetrah tetrah;			   // Тетраэдр сцены 
+SMaterial Materials[9];    // Массив материалов
 SLight uLight;             // Источник света
 SCamera uCamera;           // Камера
 
@@ -195,73 +205,99 @@ void initializeDefaultScene (out STriangle triangles[12], out SSphere spheres[2]
 	spheres[1].Radius = 1.3;  
 	spheres[1].MaterialIdx = 6;
 
+
 	// Инициализация куба из 12 треугольников
-	cube.bounds[0].v1 = vec3(1.0,1.0,2.0);
-	cube.bounds[0].v2 = vec3(1.0,1.5,2.0);
-	cube.bounds[0].v3 = vec3(1.0,1.0,1.5);
-	cube.bounds[0].MaterialIdx = 7;
-	
-	cube.bounds[1].v1 = vec3(1.0,1.5,1.5);
-	cube.bounds[1].v2 = vec3(1.0,1.5,2.0);
-	cube.bounds[1].v3 = vec3(1.0,1.0,1.5);
-	cube.bounds[1].MaterialIdx = 7;
+	cube.bounds[0].v1 = vec3(0.75, 0.75, 2.25);
+    cube.bounds[0].v2 = vec3(0.75, 1.75, 2.25);
+    cube.bounds[0].v3 = vec3(0.75, 0.75, 1.25);
+    cube.bounds[0].MaterialIdx = 7;
 
-	cube.bounds[2].v1 = vec3(1.0,1.0,2.0);
-	cube.bounds[2].v2 = vec3(1.0,1.5,2.0);
-	cube.bounds[2].v3 = vec3(1.5,1.0,2.0);
-	cube.bounds[2].MaterialIdx = 7;
-	
-	cube.bounds[3].v1 = vec3(1.5,1.5,2.0);
-	cube.bounds[3].v2 = vec3(1.0,1.5,2.0);
-	cube.bounds[3].v3 = vec3(1.5,1.0,2.0);
-	cube.bounds[3].MaterialIdx = 7;
-	
-	cube.bounds[4].v1 = vec3(1.5,1.5,1.5);
-	cube.bounds[4].v2 = vec3(1.0,1.5,1.5);
-	cube.bounds[4].v3 = vec3(1.0,1.5,2.0);
-	cube.bounds[4].MaterialIdx = 7;
-	
-	cube.bounds[5].v1 = vec3(1.5,1.5,1.5);
-	cube.bounds[5].v2 = vec3(1.5,1.5,2.0);
-	cube.bounds[5].v3 = vec3(1.0,1.5,2.0);
-	cube.bounds[5].MaterialIdx = 7;
-	
-	cube.bounds[6].v1 = vec3(1.5,1.5,1.5);
-	cube.bounds[6].v2 = vec3(1.5,1.5,2.0);
-	cube.bounds[6].v3 = vec3(1.5,1.0,1.5);
-	cube.bounds[6].MaterialIdx = 7;
-	
-	cube.bounds[7].v1 = vec3(1.5,1.0,2.0);
-	cube.bounds[7].v2 = vec3(1.5,1.5,2.0);
-	cube.bounds[7].v3 = vec3(1.5,1.0,1.5);
-	cube.bounds[7].MaterialIdx = 7;
-	
-	cube.bounds[8].v1 = vec3(1.0,1.0,2.0);
-	cube.bounds[8].v2 = vec3(1.0,1.0,1.5);
-	cube.bounds[8].v3 = vec3(1.5,1.0,1.5);
-	cube.bounds[8].MaterialIdx = 7;
+    cube.bounds[1].v1 = vec3(0.75, 1.75, 1.25);
+    cube.bounds[1].v2 = vec3(0.75, 1.75, 2.25);
+    cube.bounds[1].v3 = vec3(0.75, 0.75, 1.25);
+    cube.bounds[1].MaterialIdx = 7;
 
-	cube.bounds[9].v1 = vec3(1.0,1.0,2.0);
-	cube.bounds[9].v2 = vec3(1.5,1.0,2.0);
-	cube.bounds[9].v3 = vec3(1.5,1.0,1.5);
-	cube.bounds[9].MaterialIdx = 7;
-	
-	cube.bounds[10].v1 = vec3(1.0,1.5,1.5);
-	cube.bounds[10].v2 = vec3(1.5,1.5,1.5);
-	cube.bounds[10].v3 = vec3(1.0,1.0,1.5);
-	cube.bounds[10].MaterialIdx = 7;
-	
-	cube.bounds[11].v1 = vec3(1.5,1.0,1.5);
-	cube.bounds[11].v2 = vec3(1.5,1.5,1.5);
-	cube.bounds[11].v3 = vec3(1.0,1.0,1.5);
-	cube.bounds[11].MaterialIdx = 7;
-	cube.MaterialIdx = 7;
+    cube.bounds[2].v1 = vec3(0.75, 0.75, 2.25);
+    cube.bounds[2].v2 = vec3(0.75, 1.75, 2.25);
+    cube.bounds[2].v3 = vec3(1.75, 0.75, 2.25);
+    cube.bounds[2].MaterialIdx = 7;
+
+    cube.bounds[3].v1 = vec3(1.75, 1.75, 2.25);
+    cube.bounds[3].v2 = vec3(0.75, 1.75, 2.25);
+    cube.bounds[3].v3 = vec3(1.75, 0.75, 2.25);
+    cube.bounds[3].MaterialIdx = 7;
+
+    cube.bounds[4].v1 = vec3(1.75, 1.75, 1.25);
+    cube.bounds[4].v2 = vec3(0.75, 1.75, 1.25);
+    cube.bounds[4].v3 = vec3(0.75, 1.75, 2.25);
+    cube.bounds[4].MaterialIdx = 7;
+
+    cube.bounds[5].v1 = vec3(1.75, 1.75, 1.25);
+    cube.bounds[5].v2 = vec3(1.75, 1.75, 2.25);
+    cube.bounds[5].v3 = vec3(0.75, 1.75, 2.25);
+    cube.bounds[5].MaterialIdx = 7;
+
+    cube.bounds[6].v1 = vec3(1.75, 1.75, 1.25);
+    cube.bounds[6].v2 = vec3(1.75, 1.75, 2.25);
+    cube.bounds[6].v3 = vec3(1.75, 0.75, 1.25);
+    cube.bounds[6].MaterialIdx = 7;
+
+    cube.bounds[7].v1 = vec3(1.75, 0.75, 2.25);
+    cube.bounds[7].v2 = vec3(1.75, 1.75, 2.25);
+    cube.bounds[7].v3 = vec3(1.75, 0.75, 1.25);
+    cube.bounds[7].MaterialIdx = 7;
+
+    cube.bounds[8].v1 = vec3(0.75, 0.75, 2.25);
+    cube.bounds[8].v2 = vec3(0.75, 0.75, 1.25);
+    cube.bounds[8].v3 = vec3(1.75, 0.75, 1.25);
+    cube.bounds[8].MaterialIdx = 7;
+
+    cube.bounds[9].v1 = vec3(0.75, 0.75, 2.25);
+    cube.bounds[9].v2 = vec3(1.75, 0.75, 2.25);
+    cube.bounds[9].v3 = vec3(1.75, 0.75, 1.25);
+    cube.bounds[9].MaterialIdx = 7;
+
+    cube.bounds[10].v1 = vec3(0.75, 1.75, 1.25);
+    cube.bounds[10].v2 = vec3(1.75, 1.75, 1.25);
+    cube.bounds[10].v3 = vec3(0.75, 0.75, 1.25);
+    cube.bounds[10].MaterialIdx = 7;
+
+    cube.bounds[11].v1 = vec3(1.75, 0.75, 1.25);
+    cube.bounds[11].v2 = vec3(1.75, 1.75, 1.25);
+    cube.bounds[11].v3 = vec3(0.75, 0.75, 1.25);
+    cube.bounds[11].MaterialIdx = 7;
+    cube.MaterialIdx = 7;
+
+
+	// Инициализация тетраэдра из 4 треугольников
+	tetrah.bounds[0].v1 = vec3(0.0, -1.5, 2.0);
+	tetrah.bounds[0].v2 = vec3(2.0, -1.5, 2.0);
+	tetrah.bounds[0].v3 = vec3(1.0, -1.5, 0.5);
+	tetrah.bounds[0].MaterialIdx = 8;
+
+	tetrah.bounds[1].v1 = vec3(2.0, -1.5, 2.0);
+	tetrah.bounds[1].v2 = vec3(1.0, -0.2, 1.2);
+	tetrah.bounds[1].v3 = vec3(1.0, -1.5, 0.5);
+	tetrah.bounds[1].MaterialIdx = 8;
+
+	tetrah.bounds[2].v1 = vec3(1.0, -0.2, 1.2);
+	tetrah.bounds[2].v2 = vec3(0.0, -1.5, 2.0);
+	tetrah.bounds[2].v3 = vec3(1.0, -1.5, 0.5);
+	tetrah.bounds[2].MaterialIdx = 8;
+
+	tetrah.bounds[3].v1 = vec3(0.0, -1.5, 2.0);
+	tetrah.bounds[3].v2 = vec3(2.0, -1.5, 2.0);
+	tetrah.bounds[3].v3 = vec3(1.0, -0.2, 1.2);
+	tetrah.bounds[3].MaterialIdx = 8;
+
+	tetrah.MaterialIdx = 8;
+
 }
 
 
 
 // Инициализация материалов и света по умолчанию
-void initializeDefaultLightMaterials(out SLight light, out SMaterial materials[8]) 
+void initializeDefaultLightMaterials(out SLight light, out SMaterial materials[9]) 
 {
     light.Position = vec3(0.0, 2.0, -4.0f); 
  
@@ -315,6 +351,12 @@ void initializeDefaultLightMaterials(out SLight light, out SMaterial materials[8
     materials[7].ReflectionCoef = 0.5;  
 	materials[7].RefractionCoef = 1.0;  
 	materials[7].MaterialType = DIFFUSE_REFLECTION;
+
+	materials[8].Color = vec3(1.0, 0.5, 0.0); // Оранжевый цвет для тетраэдра
+	materials[8].LightCoeffs = vec4(lightCoefs); 
+	materials[8].ReflectionCoef = 0.5;  
+	materials[8].RefractionCoef = 1.0;  
+	materials[8].MaterialType = DIFFUSE_REFLECTION;
 }
 
 
@@ -459,6 +501,28 @@ bool Raytrace ( SRay ray, float start, float final, inout SIntersection intersec
             result = true;   
         } 
     }
+
+	// Проверка пересечения с тетраэдром
+    for(int i = 0; i < 4; i++)  // Тетраэдр состоит из 4 треугольников
+    {
+        STriangle triangle = tetrah.bounds[i]; 
+        if(IntersectTriangle(ray, triangle.v1, triangle.v2, triangle.v3, test) && test < intersect.Time)
+        {        
+            intersect.Time = test;  
+            intersect.Point = ray.Origin + ray.Direction * test;  
+            intersect.Normal = normalize(cross(triangle.v1 - triangle.v2, triangle.v3 - triangle.v2));
+            
+            // Используем материал тетраэдра (Materials[8] в данном случае)
+            SMaterial mat = Materials[tetrah.MaterialIdx]; 
+            intersect.Color = mat.Color;    
+            intersect.LightCoeffs = mat.LightCoeffs;
+            intersect.ReflectionCoef = mat.ReflectionCoef;       
+            intersect.RefractionCoef = mat.RefractionCoef;       
+            intersect.MaterialType = mat.MaterialType;       
+            result = true;   
+        } 
+    }
+
     return result;
 } 
 

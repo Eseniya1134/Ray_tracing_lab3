@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\raytracing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|solutionrelative:raytracing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|c:\\users\\eseniya\\desktop\\\u0431\u0434\\raytracing-master (1)\\raytracing-master\\raytracing\\shaders\\raytracing.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|solutionrelative:raytracing\\shaders\\raytracing.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\raytracing\\shaders\\raytracing.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|solutionrelative:raytracing\\shaders\\raytracing.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -19,8 +11,16 @@
       "RelativeMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|solutionrelative:raytracing\\shaders\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\raytracing\\shaders\\raytracing.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|solutionrelative:raytracing\\shaders\\raytracing.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\raytracing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|solutionrelative:raytracing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|c:\\users\\eseniya\\desktop\\\u0431\u0434\\raytracing-master (1)\\raytracing-master\\raytracing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|solutionrelative:raytracing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3E3DF1B2-7FF0-4195-9BBE-C468C339B855}|Raytracing\\Raytracing.csproj|C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\raytracing\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "raytracing.vert",
               "DocumentMoniker": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Shaders\\raytracing.vert",
               "RelativeDocumentMoniker": "Raytracing\\Shaders\\raytracing.vert",
@@ -67,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Shaders\\Program.cs",
               "RelativeDocumentMoniker": "Raytracing\\Shaders\\Program.cs",
@@ -75,29 +75,31 @@
               "RelativeToolTip": "Raytracing\\Shaders\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T20:24:35.397Z"
+              "WhenOpened": "2025-06-05T20:24:35.397Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "raytracing.frag",
               "DocumentMoniker": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Shaders\\raytracing.frag",
               "RelativeDocumentMoniker": "Raytracing\\Shaders\\raytracing.frag",
               "ToolTip": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Shaders\\raytracing.frag",
               "RelativeToolTip": "Raytracing\\Shaders\\raytracing.frag",
-              "ViewState": "AgIAALQBAAAAAAAAAAAAAFMCAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-06-05T18:44:18.494Z"
+              "WhenOpened": "2025-06-05T18:44:18.494Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Form1.cs",
               "RelativeDocumentMoniker": "Raytracing\\Form1.cs",
               "ToolTip": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Form1.cs",
               "RelativeToolTip": "Raytracing\\Form1.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAIAwwI4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAAwI8AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T18:29:31.343Z",
               "EditorCaption": ""
@@ -110,14 +112,14 @@
               "RelativeDocumentMoniker": "Raytracing\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Form1.Designer.cs",
               "RelativeToolTip": "Raytracing\\Form1.Designer.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAowG4AAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAACkBAAAAAAAAAAAnwDQBAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T18:29:10.248Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\Eseniya\\Desktop\\\u0431\u0434\\RayTracing-master (1)\\RayTracing-master\\Raytracing\\Form1.cs",
               "RelativeDocumentMoniker": "Raytracing\\Form1.cs",

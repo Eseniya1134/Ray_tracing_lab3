@@ -151,6 +151,22 @@ namespace OpenGL
             openGlControl.Invalidate();
         }
 
-       
+        private void trackBar7_Scroll(object sender, EventArgs e)
+        {
+            CameraPosition.Z = trackBar7.Value;
+            openGlControl.Invalidate();
+        }
+
+        private void trackBar8_Scroll(object sender, EventArgs e)
+        {
+            CameraPosition.Y = trackBar8.Value;
+            openGlControl.Invalidate();
+        }
+
+        private void trackBar9_Scroll_1(object sender, EventArgs e)
+        {
+            CameraPosition.X = trackBar9.Value;
+            openGlControl.Invalidate();
+        }
     }
 }
