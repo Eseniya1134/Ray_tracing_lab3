@@ -20,8 +20,11 @@ namespace OpenGL
         int BasicVertexShader;
         int BasicFragmentShader;
         OpenTK.Vector3 CubeColor;
+        OpenTK.Vector3 TetrahColor;
         OpenTK.Vector3 CameraPosition;
         OpenTK.Vector3 CubeCoord2;
+        float sphere1Transparency = 0f; // Прозрачность первой сферы
+        float sphere2Transparency = 0f; // Прозрачность второй сферы
 
         public Form1()
         {
@@ -79,7 +82,12 @@ namespace OpenGL
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.UseProgram(BasicProgramID);
             SetUniformVec3("cube_color", CubeColor);
+            SetUniformVec3("tetrah_color", TetrahColor);
             SetUniformVec3("camera_position", CameraPosition);
+            // Установка начальной прозрачности
+            // Передаем прозрачности для обеих сфер
+            SetSphereTransparency(0, sphere1Transparency); // Для первой сферы
+            SetSphereTransparency(1, sphere2Transparency); // Для второй сферы
             // Quad
             GL.Color3(Color.White);
             GL.Begin(PrimitiveType.Quads);
@@ -113,31 +121,12 @@ namespace OpenGL
         }
 
 
-
-
+        /***СМЕНА ЦВЕТА КУБИКА***/
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             CubeColor.X = trackBar1.Value / 255.0f;
             openGlControl.Invalidate();
         }
-
-        /*private void trackBar4_Scroll(object sender, EventArgs e)
-        {
-            CameraPosition.X = trackBar4.Value;
-            openGlControl.Invalidate();
-        }
-
-        private void trackBar5_Scroll(object sender, EventArgs e)
-        {
-            CameraPosition.Y = trackBar5.Value;
-            openGlControl.Invalidate();
-        }
-
-        private void trackBar6_Scroll(object sender, EventArgs e)
-        {
-            CameraPosition.Z = trackBar6.Value;
-            openGlControl.Invalidate();
-        }*/
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
@@ -151,6 +140,28 @@ namespace OpenGL
             openGlControl.Invalidate();
         }
 
+
+        /***СМЕНА ЦВЕТА ТЕТРАЭДРА***/
+        private void trackBar4_Scroll(object sender, EventArgs e)
+        {
+            TetrahColor.X = trackBar4.Value / 255.0f;
+            openGlControl.Invalidate();
+        }
+
+        private void trackBar5_Scroll(object sender, EventArgs e)
+        {
+            TetrahColor.Y = trackBar5.Value / 255.0f;
+            openGlControl.Invalidate();
+        }
+
+        private void trackBar6_Scroll(object sender, EventArgs e)
+        {
+            TetrahColor.Z = trackBar6.Value / 255.0f;
+            openGlControl.Invalidate();
+        }
+
+
+        /***СДВИГ КАМЕРЫ***/
         private void trackBar7_Scroll(object sender, EventArgs e)
         {
             CameraPosition.Z = trackBar7.Value;
@@ -167,6 +178,28 @@ namespace OpenGL
         {
             CameraPosition.X = trackBar9.Value;
             openGlControl.Invalidate();
+        }
+
+
+        /***ПРОЗРАЧНОСТЬ ШАРОВ {1, 2}***/
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            sphere1Transparency = vScrollBar1.Value / 100f;
+            openGlControl.Invalidate();
+        }
+
+        private void vScrollBar2_Scroll(object sender, ScrollEventArgs e)
+        {
+            sphere2Transparency = vScrollBar2.Value / 100f;
+            openGlControl.Invalidate();
+        }
+
+        void SetSphereTransparency(int sphereIndex, float transparency)
+        {
+            GL.UseProgram(BasicProgramID);
+            string uniformName = sphereIndex == 0 ? "u_sphere1_clarity" : "u_sphere2_clarity";
+            int location = GL.GetUniformLocation(BasicProgramID, uniformName);
+            GL.Uniform1(location, transparency);
         }
     }
 }
